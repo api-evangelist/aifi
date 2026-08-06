@@ -1,0 +1,111 @@
+generated: '2026-08-06'
+method: probed
+source: >-
+  https://auth.aifi.com/realms/aifi/.well-known/openid-configuration and
+  https://www.aifi.com/llms.txt
+note: >-
+  AiFi publishes no OpenAPI, AsyncAPI, GraphQL SDL or Postman collection anywhere
+  public, so no contract-level conformance could be derived. Everything asserted
+  below comes either from the anonymously-readable OIDC discovery document for
+  AiFi's Keycloak realm or from AiFi's own llms.txt. Regulatory and certification
+  entries are recorded as CLAIMED, not verified — AiFi publishes no trust center,
+  no compliance page and no certificate artifact that would let the claim be
+  checked independently.
+standards:
+- id: openid-connect-discovery-1.0
+  conforms: true
+  evidence: >-
+    https://auth.aifi.com/realms/aifi/.well-known/openid-configuration returns 200
+    application/json with issuer, authorization_endpoint, token_endpoint, jwks_uri
+    and userinfo_endpoint.
+- id: oauth2
+  conforms: true
+  evidence: >-
+    Discovery advertises authorization_code, implicit, refresh_token, password,
+    client_credentials, device_code and CIBA grant types.
+- id: rfc7636-pkce
+  conforms: true
+  evidence: 'code_challenge_methods_supported: [plain, S256]'
+- id: rfc9126-pushed-authorization-requests
+  conforms: true
+  evidence: >-
+    pushed_authorization_request_endpoint present;
+    require_pushed_authorization_requests is false.
+- id: rfc8705-mtls-client-auth
+  conforms: true
+  evidence: >-
+    tls_client_auth in token_endpoint_auth_methods_supported;
+    tls_client_certificate_bound_access_tokens true; mtls_endpoint_aliases present.
+- id: rfc8628-device-authorization-grant
+  conforms: true
+  evidence: device_authorization_endpoint present.
+- id: openid-ciba
+  conforms: true
+  evidence: 'backchannel_authentication_endpoint present; delivery modes [poll, ping].'
+- id: rfc7591-dynamic-client-registration
+  conforms: true
+  evidence: registration_endpoint present at /clients-registrations/openid-connect.
+- id: rfc7662-token-introspection
+  conforms: true
+  evidence: introspection_endpoint present.
+- id: rfc7009-token-revocation
+  conforms: true
+  evidence: revocation_endpoint present.
+- id: openid-backchannel-logout
+  conforms: true
+  evidence: 'backchannel_logout_supported and frontchannel_logout_supported both true.'
+- id: rfc8414-oauth-authorization-server-metadata
+  conforms: false
+  evidence: >-
+    /realms/aifi/.well-known/oauth-authorization-server returns 404; only the OIDC
+    discovery path is served.
+- id: llms-txt
+  conforms: true
+  evidence: 'https://www.aifi.com/llms.txt returns 200 text/plain, 17,902 bytes.'
+- id: openapi
+  conforms: false
+  evidence: >-
+    No OpenAPI at any probed location on www.aifi.com; every path on docs.aifi.com
+    302s to the Keycloak login.
+- id: asyncapi
+  conforms: false
+  evidence: No AsyncAPI or public event/webhook catalog published.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on www.aifi.com and auth.aifi.com.
+- id: rfc8615-well-known-agent-card
+  conforms: false
+  evidence: >-
+    /.well-known/agent-card.json and /.well-known/agent.json return 404 on
+    www.aifi.com and auth.aifi.com, and 302-to-login on docs.aifi.com.
+- id: rfc9457-problem-details
+  conforms: unknown
+  evidence: No public spec or error reference to evaluate.
+claimed_compliance:
+  status: claimed-not-verified
+  source: https://www.aifi.com/llms.txt
+  note: >-
+    AiFi states these in its own llms.txt. There is no trust center, compliance
+    page or published certificate to corroborate them — trust.aifi.com does not
+    resolve, and /trust, /security and /compliance return 404 on www.aifi.com. No
+    `Compliance` pointer is wired in apis.yml for that reason.
+  claims:
+  - ISO 27001 certified
+  - GDPR compliant
+  - CCPA compliant
+  - BIPA compliant (Spatial Identity for Retail, opt-in model)
+  - TVS compliant (US government / CBP deployments, >95% accuracy claimed)
+  - No biometric data stored in commerce contexts
+x-evidence:
+  fetched: '2026-08-06'
+  probes:
+  - url: https://auth.aifi.com/realms/aifi/.well-known/openid-configuration
+    http_status: 200
+  - url: https://auth.aifi.com/realms/aifi/.well-known/oauth-authorization-server
+    http_status: 404
+  - url: https://www.aifi.com/llms.txt
+    http_status: 200
+  - url: https://www.aifi.com/openapi.json
+    http_status: 404
+  - url: https://www.aifi.com/.well-known/security.txt
+    http_status: 404

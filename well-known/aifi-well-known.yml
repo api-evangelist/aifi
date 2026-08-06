@@ -1,0 +1,64 @@
+generated: '2026-08-06'
+method: probed
+source: https://auth.aifi.com/realms/aifi/.well-known/openid-configuration
+note: >-
+  AiFi serves no /.well-known/ documents from its marketing host (www.aifi.com) and
+  its documentation host (docs.aifi.com) 302s every path — including every
+  /.well-known/ path — to the AiFi Keycloak login, so nothing there can be read
+  anonymously. The one anonymous discovery document AiFi does publish is the
+  OpenID Connect configuration for its Keycloak realm, which is the identity
+  provider fronting both the docs portal and the partner portal.
+hosts:
+- host: https://www.aifi.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://auth.aifi.com
+  documents:
+  - path: /realms/aifi/.well-known/openid-configuration
+    status: 200
+    content_type: application/json
+    file: aifi-openid-configuration.json
+    spec: OpenID Connect Discovery 1.0
+  - path: /realms/aifi/.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+- host: https://docs.aifi.com
+  gated: true
+  gate: >-
+    oauth2-proxy in front of Keycloak realm `aifi` (client_id docs-oidc-client);
+    every path returns 302 to
+    https://auth.aifi.com/realms/aifi/protocol/openid-connect/auth
+  documents:
+  - path: /.well-known/security.txt
+    status: 302
+  - path: /.well-known/agent-card.json
+    status: 302
+  - path: /.well-known/openid-configuration
+    status: 302
+x-evidence:
+  fetched: '2026-08-06'
+  probes:
+  - url: https://auth.aifi.com/realms/aifi/.well-known/openid-configuration
+    http_status: 200
+  - url: https://www.aifi.com/.well-known/security.txt
+    http_status: 404
+  - url: https://docs.aifi.com/.well-known/agent-card.json
+    http_status: 302

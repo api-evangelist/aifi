@@ -1,0 +1,38 @@
+generated: '2026-08-06'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.aifi.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 30 01:23:46 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: auth.aifi.com
+  https: true
+  tls_version: TLSv1.3
+  hsts: true
+  hsts_max_age: 31536000
+  hsts_include_subdomains: true
+  note: Keycloak identity provider (realm `aifi`) fronting the docs and partner portals.
+- host: docs.aifi.com
+  https: true
+  tls_version: TLSv1.3
+  hsts: true
+  hsts_max_age: 31536000
+  hsts_include_subdomains: true
+  note: Developer documentation portal; every path 302s to the Keycloak login.
+- host: partners.aifi.com
+  https: true
+  tls_version: TLSv1.3
+  hsts: true
+  hsts_max_age: 2592000
+  hsts_include_subdomains: false
+  note: Partner portal single-page application; authenticated.
+domains:
+- domain: aifi.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

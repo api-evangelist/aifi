@@ -1,17 +1,34 @@
 aid: aifi
 name: AiFi
-description: 'AiFi is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'AiFi is a spatial-intelligence platform that uses camera-only computer
+  vision to understand human behavior in physical spaces. Founded in 2016 and headquartered
+  in San Francisco, it powers autonomous checkout, frictionless identity and entry,
+  real-time fraud prevention, historical journey analytics and an operational co-pilot
+  across retail, stadiums and arenas, quick-service restaurants, travel hubs, healthcare,
+  campuses and government border control. The platform needs no shelf sensors or RFID
+  and tracks shoppers with anonymous skeletal keypoint detection rather than facial
+  recognition by default. AiFi publishes a suite of retailer-facing OASIS APIs that
+  bridge its platform to POS (NCR, Oracle, Square) and payment (Stripe, Adyen) systems,
+  but the developer documentation is served only to authenticated accounts through
+  an AiFi Keycloak single sign-on.'
+image: https://framerusercontent.com/assets/5f5E5VdygR6bvI2EpHrCRo6Euo.png
 url: https://raw.githubusercontent.com/api-evangelist/aifi/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-06'
 modified: '2026-08-06'
 tags:
 - Company
+- Computer Vision
+- Retail
+- Autonomous Checkout
+- Spatial Intelligence
+- Artificial Intelligence
+- Analytics
+- Identity
+- Fraud Prevention
+- Point of Sale
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +36,59 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/aifi-domain-security.yml
 - type: Website
-  url: https://www.nasdaqprivatemarket.com/
+  url: https://www.aifi.com/
+- type: About
+  url: https://www.aifi.com/about-us
+- type: Blog
+  url: https://www.aifi.com/blog
+- type: Press
+  url: https://www.aifi.com/press-coverage
+- type: Partners
+  url: https://www.aifi.com/partners
+- type: PrivacyPolicy
+  url: https://www.aifi.com/privacy
+- type: Contact
+  url: https://www.aifi.com/lets-talk
+- type: OpenSourcePolicy
+  url: https://www.aifi.com/open-source
+- type: LLMsTxt
+  url: llms/aifi-llms.txt
+- type: WellKnown
+  url: well-known/aifi-well-known.yml
+- type: Authentication
+  url: authentication/aifi-authentication.yml
+- type: OpenIDConnect
+  url: https://auth.aifi.com/realms/aifi/.well-known/openid-configuration
+- type: OAuthScopes
+  url: scopes/aifi-scopes.yml
+- type: Conformance
+  url: conformance/aifi-conformance.yml
+x-enrichment:
+  date: '2026-08-06'
+  status: minimal
+  artifacts_added: 7
+  pass: local-v1
+x-coverage:
+  state: gated
+  reason: partner-login
+  detail: >-
+    AiFi markets a suite of OASIS retailer APIs, but docs.aifi.com sits behind an
+    oauth2-proxy that 302s every single path — including /openapi.json and every
+    /.well-known/ path — to an AiFi Keycloak login (realm `aifi`, client_id
+    `docs-oidc-client`), and www.aifi.com carries no developer, docs or API page at
+    all, so not one line of the API reference or contract is publicly readable.
+  evidence:
+  - url: https://docs.aifi.com/openapi.json
+    status: 302
+  - url: https://docs.aifi.com/
+    status: 302
+  - url: https://www.aifi.com/developers
+    status: 404
+  - url: https://www.aifi.com/openapi.json
+    status: 404
+  - url: https://auth.aifi.com/realms/aifi/.well-known/openid-configuration
+    status: 200
+  checked: '2026-08-06'
