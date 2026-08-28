@@ -11,6 +11,17 @@ description: 'AiFi is a spatial-intelligence platform that uses camera-only comp
   bridge its platform to POS (NCR, Oracle, Square) and payment (Stripe, Adyen) systems,
   but the developer documentation is served only to authenticated accounts through
   an AiFi Keycloak single sign-on.'
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - none
+  generated: '2026-08-28'
+  method: derived
 image: https://framerusercontent.com/assets/5f5E5VdygR6bvI2EpHrCRo6Euo.png
 url: https://raw.githubusercontent.com/api-evangelist/aifi/refs/heads/main/apis.yml
 x-type: company
