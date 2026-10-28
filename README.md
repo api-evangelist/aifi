@@ -64,5 +64,88 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-AiFi is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://www.nasdaqprivatemarket.com/
+AiFi is a spatial-intelligence platform that uses camera-only computer vision to understand human behavior in physical spaces. Founded in 2016 and headquartered in San Francisco, it powers autonomous checkout, frictionless identity and entry, real-time fraud prevention, historical journey analytics and an operational co-pilot across retail, stadiums and arenas, quick-service restaurants, travel hubs, healthcare, campuses and government border control. The platform needs no shelf sensors or RFID and tracks shoppers with anonymous skeletal keypoint detection rather than facial recognition by default. AiFi publishes a suite of retailer-facing OASIS APIs that bridge its platform to POS (NCR, Oracle, Square) and payment (Stripe, Adyen) systems, but the developer documentation is served only to authenticated accounts through an AiFi Keycloak single sign-on.
+
+**Areas:** Company · Computer Vision · Retail · Autonomous Checkout · Spatial Intelligence · Artificial Intelligence · Analytics · Identity · Fraud Prevention · Point-of-Sale
+
+## AiFi on APIs.io
+
+Everything profiled for AiFi is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/aifi/](https://apis.io/providers/aifi/)** — or go straight to one of the APIs or properties below.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Aifi Authentication](https://apis.io/security/aifi/aifi-authentication/)
+- [Aifi Domain Security](https://apis.io/security/aifi/aifi-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Aifi Scopes](https://apis.io/scopes/aifi/aifi-scopes/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.aifi.com/)
+- [Blog](https://www.aifi.com/blog)
+- [Privacy policy](https://www.aifi.com/privacy)
+
+## API Evangelist rating
+
+**Kin Score 13.7** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 56.3 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 14.3 |
+| Access clarity | 10.5 |
+
+**Agent readiness 15.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+
+**Regulatory alignment 25.8** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/aifi/](https://apis.io/providers/aifi/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for AiFi: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/aifi/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
